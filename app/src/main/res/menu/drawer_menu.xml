@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:checked="true"
+        android:id="@+id/drawer_profile"
+        android:title="@string/drawer.profile"
+        android:icon="@drawable/ic_assignment_ind_24dp"/>
+
+    <item
+        android:id="@+id/drawer_contacts"
+        android:title="@string/drawer.contacts"
+        android:icon="@drawable/ic_group_24dp"/>
+
+    <item
+        android:id="@+id/drawer_teams"
+        android:title="@string/drawer.teams"
+        android:icon="@drawable/ic_flag_24dp"/>
+
+    <item
+        android:id="@+id/drawer_tasks"
+        android:title="@string/drawer.tasks"
+        android:icon="@drawable/ic_school_24dp"/>
+
+    <item
+        android:id="@+id/drawer_settings"
+        android:title="@string/drawer.settings"
+        android:icon="@drawable/ic_settings_24dp"/>
+
+</menu>
