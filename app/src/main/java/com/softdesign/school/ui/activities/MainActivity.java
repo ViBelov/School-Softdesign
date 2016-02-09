@@ -184,13 +184,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //mEditText2.setVisibility(visibleState);
     }
 
-
+    int chkbox = R.id.drawer_profile; //переменная в которую помещается id текущего пункта меню
+    // обработка переключения пунктов меню
     private void setupDrawer(){
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            int chkbox = R.id.drawer_profile;
+            //int chkbox = R.id.drawer_profile;
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-                mNavigationView.getMenu().findItem(chkbox).setChecked(false);
+                mNavigationView.getMenu().findItem(chkbox).setChecked(false); //выключение чекбокса текущего пункта меню
 
                 switch (item.getItemId()) {
                     case R.id.drawer_profile:
@@ -233,4 +234,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
-}
+    //обработка нажатия кнопки "НАЗАД"
+    @Override
+    public void onBackPressed() {
+        if(getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStackImmediate();
+            mNavigationView.getMenu().findItem(chkbox).setChecked(false);
+            switch (String.valueOf(getTitle())) {
+                case "Профиль":
+                    mNavigationView.getMenu().findItem(R.id.drawer_profile).setCheckable(true);
+                    mNavigationView.setCheckedItem(R.id.drawer_profile);
+
+                    break;
+                case "Контакты":
+                    mNavigationView.getMenu().findItem(R.id.drawer_contacts).setCheckable(true);
+                    mNavigationView.setCheckedItem(R.id.drawer_contacts);
+                    break;
+                case "Команды":
+                    mNavigationView.getMenu().findItem(R.id.drawer_teams).setCheckable(true);
+                    mNavigationView.setCheckedItem(R.id.drawer_teams);
+                    break;
+                case "Задачи":
+                    mNavigationView.getMenu().findItem(R.id.drawer_tasks).setCheckable(true);
+                    mNavigationView.setCheckedItem(R.id.drawer_tasks);
+                    break;
+                case "Настройки":
+                    mNavigationView.getMenu().findItem(R.id.drawer_settings).setCheckable(true);
+                    mNavigationView.setCheckedItem(R.id.drawer_settings);
+                    break;
+            }
+        } else {
+            finish();
+            System.exit(0);
+            }
+
+        }
+    }
