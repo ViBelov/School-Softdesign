@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">School</string>
+
+    <string name="drawer.profile">Профиль</string>
+    <string name="drawer.contacts">Контакты</string>
+    <string name="drawer.teams">Команды</string>
+    <string name="drawer.tasks">Задачи</string>
+    <string name="drawer.settings">Настойки</string>
+    <string name="fragment.contact.description">Здесь будут контакты</string>
+    <string name="fragment.profile.description">Здесь будет профиль</string>
+    <string name="fragment.teams.description">Здесь будут команды</string>
+    <string name="fragment.tasks.description">Здесь будут задачи</string>
+    <string name="fragment.settings.description">Здесь будут настройки</string>
 </resources>
