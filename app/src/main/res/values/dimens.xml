@@ -3,7 +3,29 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="elevation_hight">16dp</dimen>
     <!-- ручками, почему-то автоматом не создался. -->
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
-    <dimen name="nav_header_height">192dp</dimen>
+    <dimen name="nav_header_height">172dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="size_medium">56dp</dimen>
+    <dimen name="size_small">24dp</dimen>
+
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_normal">16dp</dimen>
+    <dimen name="spacing_large">72dp</dimen>
+
+    <dimen name="toolbar_collapsing_image">256dp</dimen>
+
+    <dimen name="list_item">72dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+
+    <dimen name="touch_size">44dp</dimen>
+
+    <dimen name="font_larger">20sp</dimen>
+    <dimen name="font_large">16sp</dimen>
+    <dimen name="font_normal">14sp</dimen>
+    <dimen name="font_small">12sp</dimen>
+
 </resources>

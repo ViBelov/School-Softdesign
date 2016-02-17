@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.softdesign.school.R;
+import com.softdesign.school.ui.activities.MainActivity;
 
-/**
- * Created by Admin on 05.02.2016.
- */
 public class SettingsFragment extends Fragment {
     @Nullable
     @Override
@@ -19,6 +17,7 @@ public class SettingsFragment extends Fragment {
 
         View convertView = inflater.inflate(R.layout.fragment_settings,null,false);
         getActivity().setTitle(getResources().getString(R.string.drawer_settings));
+        ((MainActivity) getActivity()).lockAppBar(true);
         return convertView;
     }
 }

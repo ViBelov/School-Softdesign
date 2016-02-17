@@ -1,20 +1,26 @@
 package com.softdesign.school.ui.activities;
 
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
+
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
+
+
 
 import com.softdesign.school.R;
 import com.softdesign.school.ui.fragments.ContactsFragment;
@@ -25,67 +31,81 @@ import com.softdesign.school.ui.fragments.TasksFragment;
 import com.softdesign.school.ui.fragments.TeamsFragment;
 import com.softdesign.school.utils.Lg;
 
-import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String VISIBLE_KEY = "visible";
-
-    CheckBox mCheckBox;
-    EditText mEditText;
-    EditText mEditText2;
     Toolbar mToolbar;
-
-    Button mBtnRed;
-    Button mBtnBlue;
-    Button mBtnGreen;
 
     private NavigationView mNavigationView;
     private DrawerLayout mNavigationDrawer;
 
     private Fragment mFragment;
     private FrameLayout mFrameContainer;
+    public CollapsingToolbarLayout mCollapsingToolbar;
+    public AppBarLayout mAppBar;
+    public AppBarLayout.LayoutParams params = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Lg.i(this.getLocalClassName(), "-----------------------------");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("School Lesson 1");
+        setTitle(this.getClass().getSimpleName());
+
         Lg.i(this.getLocalClassName(), "on create");
 
         mNavigationDrawer = (DrawerLayout) findViewById(R.id.navigation_drawer);
-        mNavigationView = (NavigationView) findViewById(R.id.navigtaion_view);
-
+        mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
+        mAppBar = (AppBarLayout) findViewById(R.id.appbar_layout);
+        mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        mToolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        setupToolbar();
         setupDrawer();
 
-        //mCheckBox = (CheckBox)findViewById(R.id.checkBox);
-        //mCheckBox.setOnClickListener(this);
 
-        //mEditText = (EditText)findViewById(R.id.editText1);
-        //mEditText2 = (EditText)findViewById(R.id.editText2);
-
-        mToolbar = (Toolbar)findViewById(R.id.toolbar);
-        setupToolbar();
-
-//        mBtnRed = (Button)findViewById(R.id.btn_red);
-//        mBtnRed.setOnClickListener(this);
-//
-//        mBtnBlue = (Button)findViewById(R.id.btn_blue);
-//        mBtnBlue.setOnClickListener(this);
-//
-//        mBtnGreen = (Button)findViewById(R.id.btn_green);
-//        mBtnGreen.setOnClickListener(this);
 
 
         if(savedInstanceState != null){
-         int visibleState = savedInstanceState.getBoolean(VISIBLE_KEY) ? View.VISIBLE : View.INVISIBLE;
-//            mEditText.setVisibility(visibleState);
+
         } else {
             getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_container, new ProfileFragment()).commit();
         }
     }
+        //коллапсирующий тулбра
+        public void lockAppBar(boolean collapse) {
+            params = (AppBarLayout.LayoutParams) mCollapsingToolbar.getLayoutParams();
+            if (collapse) {
+                mAppBar.setExpanded(false);
+                AppBarLayout.OnOffsetChangedListener mListener = new AppBarLayout.OnOffsetChangedListener() {
+                    @Override
+                    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                        if (mCollapsingToolbar.getHeight() + verticalOffset <= ViewCompat.getMinimumHeight(mCollapsingToolbar) + getStatusBarHeight()) {
+                            params.setScrollFlags(0);
+                            mCollapsingToolbar.setLayoutParams(params);
+                            mAppBar.removeOnOffsetChangedListener(this);
+                        }
+                    }
+                };
+            } else {
+                mAppBar.setExpanded(true);
+                params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL | AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED);
+                mCollapsingToolbar.setLayoutParams(params);
+            }
 
+        }
+
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+    //тулбар
     private void  setupToolbar() {
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -96,41 +116,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    //меню
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            /*Toast.makeText(this, "Click!", Toast.LENGTH_SHORT).show();*/
+
             mNavigationDrawer.openDrawer(GravityCompat.START);
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClick(View v) {
-        int id = v.getId();
-        switch (id) {
-            case R.id.checkBox:
-                Toast.makeText(this, "Click CheckBox", Toast.LENGTH_SHORT).show();
-                if (mCheckBox.isChecked()) {
-                    mEditText2.setVisibility(View.INVISIBLE);
-                } else {
-                  mEditText2.setVisibility(View.VISIBLE);
-                }
-                break;
-            case R.id.btn_red:
-
-                mToolbar.setBackgroundColor(getResources().getColor(R.color.color_red));
-                break;
-            case R.id.btn_blue:
-
-                mToolbar.setBackgroundColor(getResources().getColor(R.color.color_blue));
-                break;
-            case R.id.btn_green:
-
-                mToolbar.setBackgroundColor(getResources().getColor(R.color.color_green));
-                break;
-            default:
-                break;
-        }
-    }
 
     @Override
     protected void onStart() {
@@ -173,22 +167,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         Lg.e(this.getLocalClassName(), "on save instance state");
-        //outState.putBoolean(VISIBLE_KEY, mEditText2.getVisibility() == View.VISIBLE);
+
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         Lg.e(this.getLocalClassName(), "on restore instance state");
-        int visibleState = savedInstanceState.getBoolean(VISIBLE_KEY) ? View.VISIBLE : View.INVISIBLE;
-        //mEditText2.setVisibility(visibleState);
+
+
     }
 
     int chkbox = R.id.drawer_profile; //переменная в которую помещается id текущего пункта меню
     // обработка переключения пунктов меню
     private void setupDrawer(){
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            //int chkbox = R.id.drawer_profile;
+            int chkbox = R.id.drawer_profile;
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 mNavigationView.getMenu().findItem(chkbox).setChecked(false); //выключение чекбокса текущего пункта меню
@@ -196,15 +190,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 switch (item.getItemId()) {
                     case R.id.drawer_profile:
                         mFragment = new ProfileFragment();
-                        mNavigationView.getMenu().findItem(R.id.drawer_profile).setChecked(true);
-                        chkbox=R.id.drawer_profile;
                         Toast.makeText(MainActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.drawer_contacts:
                         mFragment = new ContactsFragment();
-                        mNavigationView.getMenu().findItem(R.id.drawer_contacts).setChecked(true);
                         Toast.makeText(MainActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
-                        chkbox=R.id.drawer_contacts;
                         break;
                     case R.id.drawer_settings:
                         mFragment = new SettingsFragment();
@@ -227,46 +217,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 }
                 if (mFragment != null) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_container, mFragment).addToBackStack(null).commit();
+                mNavigationView.getMenu().findItem(item.getItemId()).setChecked(true);
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_container, mFragment).addToBackStack(null).commit();
                 }
                 mNavigationDrawer.closeDrawers();
                 return false;
             }
         });
     }
-    //обработка нажатия кнопки "НАЗАД"
-    @Override
-    public void onBackPressed() {
-        if(getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            getSupportFragmentManager().popBackStackImmediate();
-            mNavigationView.getMenu().findItem(chkbox).setChecked(false);
-            switch (String.valueOf(getTitle())) {
-                case "Профиль":
-                    mNavigationView.getMenu().findItem(R.id.drawer_profile).setCheckable(true);
-                    mNavigationView.setCheckedItem(R.id.drawer_profile);
 
-                    break;
-                case "Контакты":
-                    mNavigationView.getMenu().findItem(R.id.drawer_contacts).setCheckable(true);
-                    mNavigationView.setCheckedItem(R.id.drawer_contacts);
-                    break;
-                case "Команды":
-                    mNavigationView.getMenu().findItem(R.id.drawer_teams).setCheckable(true);
-                    mNavigationView.setCheckedItem(R.id.drawer_teams);
-                    break;
-                case "Задачи":
-                    mNavigationView.getMenu().findItem(R.id.drawer_tasks).setCheckable(true);
-                    mNavigationView.setCheckedItem(R.id.drawer_tasks);
-                    break;
-                case "Настройки":
-                    mNavigationView.getMenu().findItem(R.id.drawer_settings).setCheckable(true);
-                    mNavigationView.setCheckedItem(R.id.drawer_settings);
-                    break;
-            }
-        } else {
-            finish();
-            System.exit(0);
-            }
+    //обработка нажатия назад
+    public void onBackPressed() {
+        //чистка чеков, все же не понял как правильно
+        mNavigationView.getMenu().findItem(R.id.drawer_profile).setChecked(false);
+        mNavigationView.getMenu().findItem(R.id.drawer_contacts).setChecked(false);
+        Fragment findingFragment = (Fragment) getSupportFragmentManager().findFragmentById(R.id.main_frame_container);
+
+        if (findingFragment != null && findingFragment instanceof ProfileFragment) {
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
         }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.navigation_drawer);
+        if (drawer.isDrawerOpen(Gravity.LEFT)) {
+            drawer.closeDrawer(Gravity.LEFT);
+        } else {
+            super.onBackPressed();
+        }
+
     }
+    @Override
+    public void onClick(View v) {
+
+    }
+}

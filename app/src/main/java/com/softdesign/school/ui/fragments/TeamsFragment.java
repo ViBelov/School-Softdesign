@@ -1,8 +1,6 @@
 package com.softdesign.school.ui.fragments;
 
-/**
- * Created by Admin on 05.02.2016.
- */
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.softdesign.school.R;
+import com.softdesign.school.ui.activities.MainActivity;
 
 public class TeamsFragment extends Fragment {
     @Nullable
@@ -19,6 +18,7 @@ public class TeamsFragment extends Fragment {
 
         View convertView = inflater.inflate(R.layout.fragment_teams,null,false);
         getActivity().setTitle(getResources().getString(R.string.drawer_teams));
+        ((MainActivity) getActivity()).lockAppBar(true);
         return convertView;
     }
 }
