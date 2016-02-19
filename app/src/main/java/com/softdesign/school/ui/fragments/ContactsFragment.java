@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +17,7 @@ import android.support.design.widget.NavigationView;
 import com.softdesign.school.R;
 import com.softdesign.school.ui.activities.MainActivity;
 import com.softdesign.school.ui.adapters.ContactAdapter;
+import com.softdesign.school.ui.model.User;
 
 import java.util.ArrayList;
 
@@ -75,6 +75,7 @@ public class ContactsFragment extends Fragment {
         fab.setLayoutParams(params);
         fab.setImageResource(R.drawable.ic_add_24dp);
         fab.show();
+
     }
     //генерируем контакты
     private void generateData() {
