@@ -1,13 +1,28 @@
 <resources>
     <string name="app_name">School</string>
 
+    <string name="ff_regular">sans-serif</string>
+    <string name="ff_medium">sans-serif-medium</string>
+
     <string name="drawer.profile">Профиль</string>
     <string name="drawer.contacts">Контакты</string>
     <string name="drawer.teams">Команды</string>
     <string name="drawer.tasks">Задачи</string>
     <string name="drawer.settings">Настойки</string>
+    <string name="drawer.rait">777</string>
+
+    <string name="fragment.profile.phone.number">8 (927) 215-42-62</string>
+    <string name="fragment.profile.phone.label.mobile">Мобильный</string>
+    <string name="fragment.profile.title">Белов Виктор</string>
+    <string name="profile.email">moneyflow@mail.ru</string>
+    <string name="fragment.contacts.title">Мои контакты</string>
+    <string name="fragment.profile.email.label">Почта</string>
+    <string name="fragment.profile.vk">vk.com/moneyflow</string>
+    <string name="fragment.profile.vk.label">ВКонтакте</string>
+    <string name="fragment.profile.github">github.com/ViBelov</string>
+    <string name="fragment.profile.github.label">GitHub</string>
+
     <string name="fragment.contact.description">Здесь будут контакты</string>
-    <string name="fragment.profile.description">Здесь будет профиль</string>
     <string name="fragment.teams.description">Здесь будут команды</string>
     <string name="fragment.tasks.description">Здесь будут задачи</string>
     <string name="fragment.settings.description">Здесь будут настройки</string>
