@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.softdesign.school.R;
-import com.softdesign.school.ui.model.User;
+import com.softdesign.school.data.storage.model.User;
 
 
 import java.util.List;

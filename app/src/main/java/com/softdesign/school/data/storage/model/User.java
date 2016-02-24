@@ -1,4 +1,4 @@
-package com.softdesign.school.ui.model;
+package com.softdesign.school.data.storage.model;
 
 import android.graphics.drawable.Drawable;
 
