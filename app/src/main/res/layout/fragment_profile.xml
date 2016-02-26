@@ -7,7 +7,6 @@
     <RelativeLayout
         style="@style/list_item"
         android:layout_marginTop="@dimen/spacing_small"
-
         android:orientation="horizontal">
 
         <ImageView
@@ -21,34 +20,44 @@
             android:src="@drawable/ic_call_24dp"/>
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/spacing_large">
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:orientation="vertical"
+            android:paddingEnd="@dimen/spacing_large"
+            android:paddingRight="@dimen/spacing_large"
+            android:layout_centerVertical="true">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:fontFamily="@string/ff_regular"
-                android:gravity="center_vertical|center_horizontal"
+                android:id="@+id/txt_phone_value"
+                style="@style/font.medium"
                 android:text="@string/fragment.profile.phone.number"
                 android:textAlignment="viewStart"
-                android:textColor="@color/color_black"
-                android:textSize="@dimen/font_normal"
                 tools:ignore="RtlCompat,UnusedAttribute"/>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:fontFamily="@string/ff_regular"
-                android:gravity="center_vertical|center_horizontal"
+                android:id="@+id/txt_phone_label"
+                style="@style/font.regular"
                 android:text="@string/fragment.profile.phone.label.mobile"
                 android:textAlignment="viewStart"
-                android:textColor="@color/color_gray"
-                android:textSize="@dimen/font_normal"
                 tools:ignore="RtlCompat,UnusedAttribute"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/et_phone_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <EditText
+                    style="@style/font.medium"
+                    android:id="@+id/et_phone_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/fragment.profile.phone.label.mobile"
+                    android:enabled="true"/>
+
+            </android.support.design.widget.TextInputLayout>
 
 
         </LinearLayout>
@@ -71,35 +80,41 @@
             android:src="@drawable/ic_email_24dp"/>
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginStart="@dimen/spacing_large"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/spacing_large">
+            android:paddingEnd="@dimen/spacing_large"
+            android:paddingRight="@dimen/spacing_large"
+            android:layout_centerVertical="true">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:fontFamily="@string/ff_regular"
-                android:gravity="center_vertical|center_horizontal"
+                android:id="@+id/txt_email_value"
+                style="@style/font.medium"
                 android:text="@string/profile.email"
                 android:textAlignment="viewStart"
-                android:textColor="@color/color_black"
-                android:textSize="@dimen/font_normal"
                 tools:ignore="RtlCompat,UnusedAttribute"/>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:fontFamily="@string/ff_regular"
-                android:gravity="center_vertical|center_horizontal"
+                android:id="@+id/txt_email_label"
+                style="@style/font.regular"
                 android:text="@string/fragment.profile.email.label"
                 android:textAlignment="viewStart"
-                android:textColor="@color/color_gray"
-                android:textSize="@dimen/font_normal"
                 tools:ignore="RtlCompat,UnusedAttribute"/>
 
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/et_email_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_email_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/fragment.profile.email.label" />
+
+            </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
     </RelativeLayout>
@@ -121,35 +136,41 @@
             android:src="@drawable/ic_vk_icon"/>
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginStart="@dimen/spacing_large"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/spacing_large">
+            android:paddingEnd="@dimen/spacing_large"
+            android:paddingRight="@dimen/spacing_large"
+            android:layout_centerVertical="true">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:fontFamily="@string/ff_regular"
-                android:gravity="center_vertical|center_horizontal"
+                android:id="@+id/txt_vk_value"
+                style="@style/font.medium"
                 android:text="@string/fragment.profile.vk"
                 android:textAlignment="viewStart"
-                android:textColor="@color/color_black"
-                android:textSize="@dimen/font_normal"
                 tools:ignore="RtlCompat,UnusedAttribute"/>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:fontFamily="@string/ff_regular"
-                android:gravity="center_vertical|center_horizontal"
+                android:id="@+id/txt_vk_label"
+                style="@style/font.regular"
                 android:text="@string/fragment.profile.vk.label"
                 android:textAlignment="viewStart"
-                android:textColor="@color/color_gray"
-                android:textSize="@dimen/font_normal"
                 tools:ignore="RtlCompat,UnusedAttribute"/>
 
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/et_vk_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_vk_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/fragment.profile.vk.label" />
+
+            </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
     </RelativeLayout>
@@ -171,34 +192,41 @@
             android:src="@drawable/ic_github"/>
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginStart="@dimen/spacing_large"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/spacing_large">
+            android:paddingEnd="@dimen/spacing_large"
+            android:paddingRight="@dimen/spacing_large"
+            android:layout_centerVertical="true">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:fontFamily="@string/ff_regular"
-                android:gravity="center_vertical|center_horizontal"
+                android:id="@+id/txt_git_value"
+                style="@style/font.medium"
                 android:text="@string/fragment.profile.github"
                 android:textAlignment="viewStart"
-                android:textColor="@color/color_black"
-                android:textSize="@dimen/font_normal"
                 tools:ignore="RtlCompat,UnusedAttribute"/>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:fontFamily="@string/ff_regular"
-                android:gravity="center_vertical|center_horizontal"
+                android:id="@+id/txt_git_label"
+                style="@style/font.regular"
                 android:text="@string/fragment.profile.github.label"
                 android:textAlignment="viewStart"
-                android:textColor="@color/color_gray"
-                android:textSize="@dimen/font_normal"
                 tools:ignore="RtlCompat,UnusedAttribute"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/et_git_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_git_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/fragment.profile.github.label" />
+
+            </android.support.design.widget.TextInputLayout>
 
 
         </LinearLayout>

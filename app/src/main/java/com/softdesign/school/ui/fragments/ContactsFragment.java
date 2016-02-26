@@ -17,7 +17,7 @@ import android.support.design.widget.NavigationView;
 import com.softdesign.school.R;
 import com.softdesign.school.ui.activities.MainActivity;
 import com.softdesign.school.ui.adapters.ContactAdapter;
-import com.softdesign.school.ui.model.User;
+import com.softdesign.school.data.storage.model.User;
 
 import java.util.ArrayList;
 

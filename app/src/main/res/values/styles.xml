@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
 
@@ -29,5 +29,20 @@
         <item name="android:layout_height">@dimen/icon_size</item>
     </style>
 
+    <style name="font">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
+    <style name="font.medium" parent="font">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@string/ff_regular</item>
+        <item name="android:textColor">@color/color_black</item>
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
+
+    <style name="font.regular" parent="font">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@string/ff_regular</item>
+        <item name="android:textColor">@color/color_gray</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
 </resources>
