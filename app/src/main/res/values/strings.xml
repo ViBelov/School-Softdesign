@@ -26,4 +26,7 @@
     <string name="fragment.teams.description">Здесь будут команды</string>
     <string name="fragment.tasks.description">Здесь будут задачи</string>
     <string name="fragment.settings.description">Здесь будут настройки</string>
+    <string name="red_team">Красная комманда</string>
+    <string name="blue_team">Синяя комманда</string>
+    <string name="green_team">Зеленая комманда</string>
 </resources>
