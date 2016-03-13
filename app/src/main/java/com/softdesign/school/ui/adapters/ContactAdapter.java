@@ -16,11 +16,13 @@ import java.util.List;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHolder> {
 
-    private List<User> users;
+    private List<User> mUsers;
 
     public ContactAdapter(List<User> users) {
-        this.users = users;
+        this.mUsers = users;
     }
+
+
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -32,14 +34,14 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        User user = users.get(position);
+        User user = mUsers.get(position);
         holder.fullName.setText(user.getmFirstName() + " " + user.getmLastName());
-        holder.avatar.setImageDrawable(user.getmImage());
+        holder.avatar.setImageResource(R.drawable.ic_account_box_24dp);
     }
 
     @Override
     public int getItemCount() {
-        return users.size();
+        return mUsers.size();
     }
 
     @Override
