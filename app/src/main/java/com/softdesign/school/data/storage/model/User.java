@@ -1,23 +1,32 @@
 package com.softdesign.school.data.storage.model;
 
-import android.graphics.drawable.Drawable;
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
 
+@Table(name = "Users")
+public class User extends Model {
 
-public class User {
+    @Column(name = "firstName")
+    public String mFirstName;
+    @Column (name = "lastName")
+    public String mLastName;
 
-    private String mFirstName;
-    private String mLastName;
-    private int mRait;
-    private Drawable mImage;
-    private String mVkLink;
-    private String mGitLink;
-    private int mHomeTask;
+    @Column(name="team")
+    public Team mTeam;
 
-    public User(Drawable mImage, String mFirstName, String mLastName) {
-        this.mImage = mImage;
-        this.mFirstName = mFirstName;
-        this.mLastName = mLastName;
+    public User() {
+         super();
     }
+
+    public User(String firstName, String lastName, Team team) {
+
+               this.mFirstName = firstName;
+               this.mLastName = lastName;
+               this.mTeam = team;
+
+    }
+
 
     public String getmFirstName() {
         return mFirstName;
@@ -27,7 +36,7 @@ public class User {
         return mLastName;
     }
 
-    public Drawable getmImage() {
-                return mImage;
+    public Team getmTeam() {
+        return mTeam;
     }
 }
